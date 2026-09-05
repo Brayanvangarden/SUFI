@@ -1,0 +1,31 @@
+                    SUFI
+                      │
+              ┌───────┴───────┐
+              │               │
+             CORE          FEATURES
+                              │
+          ┌─────────┬─────────┼─────────┬─────────┐
+          │         │         │         │         │
+       Products  Inventory Categories Shopping Dashboard
+          │
+     ┌────┼────────────┐
+     │    │            │
+    DATA DOMAIN   PRESENTATION
+     │    │            │
+     │    │            ├── Pages
+     │    │            ├── Controllers
+     │    │            └── Widgets
+     │    │
+     │    ├── Entities
+     │    ├── Repositories
+     │    └── Use Cases
+     │
+     ├── DataSources
+     ├── Models
+     └── Repository Implementations
+              │
+              ▼
+           Drift
+              │
+              ▼
+           SQLite

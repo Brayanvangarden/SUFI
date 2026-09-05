@@ -1,0 +1,10 @@
+Flutter
+Dart
+SQLite
+Drift
+Riverpod
+GoRouter
+Git
+GitHub
+Flutter Test
+Flutter Lints

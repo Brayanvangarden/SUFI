@@ -1,0 +1,239 @@
+SUFI/
+│
+├── android/
+│
+├── assets/
+│   ├── images/
+│   │   ├── logo/
+│   │   └── products/
+│   ├── icons/
+│   └── fonts/
+│
+├── lib/
+│   │
+│   ├── main.dart
+│   │
+│   ├── app/
+│   │   ├── app.dart
+│   │   │
+│   │   ├── router/
+│   │   │   └── app_router.dart
+│   │   │
+│   │   ├── theme/
+│   │   │   ├── app_theme.dart
+│   │   │   ├── app_colors.dart
+│   │   │   ├── app_text_styles.dart
+│   │   │   └── app_dimensions.dart
+│   │   │
+│   │   └── config/
+│   │       ├── app_config.dart
+│   │       └── app_constants.dart
+│   │
+│   ├── core/
+│   │   │
+│   │   ├── database/
+│   │   │   ├── app_database.dart
+│   │   │   ├── database_tables.dart
+│   │   │   └── database_migrations.dart
+│   │   │
+│   │   ├── errors/
+│   │   │   ├── app_exception.dart
+│   │   │   ├── database_exception.dart
+│   │   │   ├── validation_exception.dart
+│   │   │   └── failure.dart
+│   │   │
+│   │   ├── utils/
+│   │   │   ├── currency_utils.dart
+│   │   │   ├── date_utils.dart
+│   │   │   ├── number_utils.dart
+│   │   │   └── string_utils.dart
+│   │   │
+│   │   ├── validators/
+│   │   │   ├── required_validator.dart
+│   │   │   ├── number_validator.dart
+│   │   │   └── price_validator.dart
+│   │   │
+│   │   └── providers/
+│   │       └── core_providers.dart
+│   │
+│   ├── features/
+│   │   │
+│   │   ├── dashboard/
+│   │   │   ├── data/
+│   │   │   │   ├── datasources/
+│   │   │   ├── models/
+│   │   │   └── repositories/
+│   │   │
+│   │   │   ├── domain/
+│   │   │   │   ├── entities/
+│   │   │   ├── repositories/
+│   │   │   └── usecases/
+│   │   │
+│   │   │   └── presentation/
+│   │   │       ├── controllers/
+│   │   │       ├── pages/
+│   │   │       └── widgets/
+│   │   │
+│   │   ├── products/
+│   │   │   │
+│   │   │   ├── data/
+│   │   │   │   ├── datasources/
+│   │   │   │   │   └── product_local_datasource.dart
+│   │   │   │   │
+│   │   │   │   ├── models/
+│   │   │   │   │   └── product_model.dart
+│   │   │   │   │
+│   │   │   │   └── repositories/
+│   │   │   │       └── product_repository_impl.dart
+│   │   │   │
+│   │   │   ├── domain/
+│   │   │   │   ├── entities/
+│   │   │   │   │   └── product.dart
+│   │   │   │   │
+│   │   │   │   ├── repositories/
+│   │   │   │   │   └── product_repository.dart
+│   │   │   │   │
+│   │   │   │   └── usecases/
+│   │   │   │       ├── create_product.dart
+│   │   │   │       ├── get_product.dart
+│   │   │   │       ├── get_products.dart
+│   │   │   │       ├── update_product.dart
+│   │   │   │       └── delete_product.dart
+│   │   │   │
+│   │   │   └── presentation/
+│   │   │       ├── controllers/
+│   │   │       │   ├── product_controller.dart
+│   │   │       │   ├── create_product_controller.dart
+│   │   │       │   ├── update_product_controller.dart
+│   │   │       │   └── delete_product_controller.dart
+│   │   │       │
+│   │   │       ├── pages/
+│   │   │       │   ├── products_page.dart
+│   │   │       │   ├── create_product_page.dart
+│   │   │       │   └── edit_product_page.dart
+│   │   │       │
+│   │   │       └── widgets/
+│   │   │           ├── product_card.dart
+│   │   │           ├── product_form.dart
+│   │   │           ├── product_search.dart
+│   │   │           ├── stock_indicator.dart
+│   │   │           └── product_quantity_control.dart
+│   │   │
+│   │   ├── inventory/
+│   │   │   ├── data/
+│   │   │   │   ├── datasources/
+│   │   │   ├── models/
+│   │   │   └── repositories/
+│   │   │
+│   │   │   ├── domain/
+│   │   │   │   ├── entities/
+│   │   │   │   │   └── inventory_movement.dart
+│   │   │   │   ├── repositories/
+│   │   │   │   │   └── inventory_repository.dart
+│   │   │   │   └── usecases/
+│   │   │   │       ├── add_stock.dart
+│   │   │   │       ├── remove_stock.dart
+│   │   │   │       ├── adjust_stock.dart
+│   │   │   │       └── get_inventory_history.dart
+│   │   │   │
+│   │   │   └── presentation/
+│   │   │       ├── controllers/
+│   │   │       ├── pages/
+│   │   │       │   └── inventory_history_page.dart
+│   │   │       └── widgets/
+│   │   │           ├── movement_card.dart
+│   │   │           └── stock_movement_form.dart
+│   │   │
+│   │   ├── categories/
+│   │   │   ├── data/
+│   │   │   │   ├── datasources/
+│   │   │   ├── models/
+│   │   │   └── repositories/
+│   │   │
+│   │   │   ├── domain/
+│   │   │   │   ├── entities/
+│   │   │   │   │   └── category.dart
+│   │   │   │   ├── repositories/
+│   │   │   │   │   └── category_repository.dart
+│   │   │   │   └── usecases/
+│   │   │   │       ├── create_category.dart
+│   │   │   │       ├── get_categories.dart
+│   │   │   │       ├── update_category.dart
+│   │   │   │       └── delete_category.dart
+│   │   │   │
+│   │   │   └── presentation/
+│   │   │       ├── controllers/
+│   │   │       ├── pages/
+│   │   │       │   ├── categories_page.dart
+│   │   │       │   └── create_category_page.dart
+│   │   │       └── widgets/
+│   │   │           └── category_card.dart
+│   │   │
+│   │   ├── shopping_list/
+│   │   │   ├── data/
+│   │   │   │   ├── datasources/
+│   │   │   ├── models/
+│   │   │   └── repositories/
+│   │   │
+│   │   │   ├── domain/
+│   │   │   │   ├── entities/
+│   │   │   │   │   └── shopping_item.dart
+│   │   │   │   ├── repositories/
+│   │   │   │   │   └── shopping_list_repository.dart
+│   │   │   │   └── usecases/
+│   │   │   │       ├── add_to_shopping_list.dart
+│   │   │       ├── remove_from_shopping_list.dart
+│   │   │       ├── toggle_shopping_item.dart
+│   │   │       └── generate_shopping_list.dart
+│   │   │
+│   │   │   └── presentation/
+│   │   │       ├── controllers/
+│   │   │       ├── pages/
+│   │   │       │   └── shopping_list_page.dart
+│   │   │       └── widgets/
+│   │   │           ├── shopping_item_card.dart
+│   │   │           └── shopping_summary.dart
+│   │   │
+│   │   └── settings/
+│   │       ├── data/
+│   │       ├── domain/
+│   │       └── presentation/
+│   │           ├── controllers/
+│   │           ├── pages/
+│   │           │   └── settings_page.dart
+│   │           └── widgets/
+│   │
+│   └── shared/
+│       ├── widgets/
+│       │   ├── app_button.dart
+│       │   ├── app_text_field.dart
+│       │   ├── app_dialog.dart
+│       │   ├── app_loading.dart
+│       │   └── app_empty_state.dart
+│       │
+│       ├── extensions/
+│       │   └── ...
+│       │
+│       └── enums/
+│           ├── stock_status.dart
+│           └── movement_type.dart
+│
+├── test/
+│   ├── core/
+│   │
+│   └── features/
+│       ├── products/
+│       │   ├── data/
+│       │   ├── domain/
+│       │   └── presentation/
+│       │
+│       ├── inventory/
+│       ├── categories/
+│       ├── shopping_list/
+│       └── dashboard/
+│
+├── pubspec.yaml
+├── analysis_options.yaml
+├── .gitignore
+├── README.md
+└── CHANGELOG.md
