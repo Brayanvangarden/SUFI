@@ -3,6 +3,14 @@ import 'package:flutter/material.dart';
 import '../../../../app/theme/app_dimensions.dart';
 
 class ProductForm extends StatefulWidget {
+  final String? initialName;
+  final String? initialDescription;
+  final double? initialCurrentQuantity;
+  final double? initialOptimalQuantity;
+  final double? initialMinimumQuantity;
+  final int? initialPrice;
+  final String? initialUnit;
+
   final Future<void> Function({
     required String name,
     String? description,
@@ -11,10 +19,18 @@ class ProductForm extends StatefulWidget {
     required double minimumQuantity,
     required int price,
     required String unit,
-  })? onSubmit;
+  })?
+  onSubmit;
 
   const ProductForm({
     super.key,
+    this.initialName,
+    this.initialDescription,
+    this.initialCurrentQuantity,
+    this.initialOptimalQuantity,
+    this.initialMinimumQuantity,
+    this.initialPrice,
+    this.initialUnit,
     this.onSubmit,
   });
 
@@ -34,6 +50,35 @@ class _ProductFormState extends State<ProductForm> {
   final _unitController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+
+    _nameController.text = widget.initialName ?? '';
+    _descriptionController.text = widget.initialDescription ?? '';
+
+    if (widget.initialCurrentQuantity != null) {
+      _currentQuantityController.text = widget.initialCurrentQuantity
+          .toString();
+    }
+
+    if (widget.initialOptimalQuantity != null) {
+      _optimalQuantityController.text = widget.initialOptimalQuantity
+          .toString();
+    }
+
+    if (widget.initialMinimumQuantity != null) {
+      _minimumQuantityController.text = widget.initialMinimumQuantity
+          .toString();
+    }
+
+    if (widget.initialPrice != null) {
+      _priceController.text = widget.initialPrice.toString();
+    }
+
+    _unitController.text = widget.initialUnit ?? '';
+  }
+
+  @override
   void dispose() {
     _nameController.dispose();
     _descriptionController.dispose();
@@ -47,41 +92,43 @@ class _ProductFormState extends State<ProductForm> {
   }
 
   Future<void> _submit() async {
-  if (!_formKey.currentState!.validate()) {
-    return;
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
+
+    final currentQuantity = double.tryParse(
+      _currentQuantityController.text.trim(),
+    );
+
+    final optimalQuantity = double.tryParse(
+      _optimalQuantityController.text.trim(),
+    );
+
+    final minimumQuantity = double.tryParse(
+      _minimumQuantityController.text.trim(),
+    );
+
+    final price = int.tryParse(_priceController.text.trim());
+
+    if (currentQuantity == null ||
+        optimalQuantity == null ||
+        minimumQuantity == null ||
+        price == null) {
+      return;
+    }
+
+    await widget.onSubmit?.call(
+      name: _nameController.text.trim(),
+      description: _descriptionController.text.trim().isEmpty
+          ? null
+          : _descriptionController.text.trim(),
+      currentQuantity: currentQuantity,
+      optimalQuantity: optimalQuantity,
+      minimumQuantity: minimumQuantity,
+      price: price,
+      unit: _unitController.text.trim(),
+    );
   }
-
-  final currentQuantity =
-      double.tryParse(_currentQuantityController.text.trim());
-
-  final optimalQuantity =
-      double.tryParse(_optimalQuantityController.text.trim());
-
-  final minimumQuantity =
-      double.tryParse(_minimumQuantityController.text.trim());
-
-  final price =
-      int.tryParse(_priceController.text.trim());
-
-  if (currentQuantity == null ||
-      optimalQuantity == null ||
-      minimumQuantity == null ||
-      price == null) {
-    return;
-  }
-
-  await widget.onSubmit?.call(
-    name: _nameController.text.trim(),
-    description: _descriptionController.text.trim().isEmpty
-        ? null
-        : _descriptionController.text.trim(),
-    currentQuantity: currentQuantity,
-    optimalQuantity: optimalQuantity,
-    minimumQuantity: minimumQuantity,
-    price: price,
-    unit: _unitController.text.trim(),
-  );
-}
 
   @override
   Widget build(BuildContext context) {
@@ -120,9 +167,7 @@ class _ProductFormState extends State<ProductForm> {
               labelText: 'Cantidad actual',
               hintText: 'Ej. 2.5',
             ),
-            keyboardType: const TextInputType.numberWithOptions(
-              decimal: true,
-            ),
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
           ),
           const SizedBox(height: AppDimensions.spacingMd),
           TextFormField(
@@ -131,9 +176,7 @@ class _ProductFormState extends State<ProductForm> {
               labelText: 'Cantidad óptima',
               hintText: 'Ej. 5',
             ),
-            keyboardType: const TextInputType.numberWithOptions(
-              decimal: true,
-            ),
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
           ),
           const SizedBox(height: AppDimensions.spacingMd),
           TextFormField(
@@ -142,9 +185,7 @@ class _ProductFormState extends State<ProductForm> {
               labelText: 'Cantidad mínima',
               hintText: 'Ej. 1',
             ),
-            keyboardType: const TextInputType.numberWithOptions(
-              decimal: true,
-            ),
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
           ),
           const SizedBox(height: AppDimensions.spacingMd),
           TextFormField(

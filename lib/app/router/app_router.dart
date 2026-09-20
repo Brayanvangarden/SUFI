@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 
+import '../../features/products/presentation/pages/edit_product_page.dart';
 import '../../features/dashboard/presentation/pages/dashboard_page.dart';
 import '../../features/products/presentation/pages/products_page.dart';
 import '../../features/shopping_list/presentation/pages/shopping_list_page.dart';
@@ -40,6 +41,15 @@ final appRouter = GoRouter(
                   name: 'create-product',
                   builder: (context, state) {
                     return const CreateProductPage();
+                  },
+                ),
+                GoRoute(
+                  path: ':id/edit',
+                  name: 'edit-product',
+                  builder: (context, state) {
+                    final productId = int.parse(state.pathParameters['id']!);
+
+                    return EditProductPage(productId: productId);
                   },
                 ),
               ],

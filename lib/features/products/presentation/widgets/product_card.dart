@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../app/theme/app_dimensions.dart';
 import '../../../../app/theme/app_text_styles.dart';
@@ -9,11 +10,13 @@ import '../../domain/entities/product.dart';
 class ProductCard extends StatelessWidget {
   final Product product;
   final VoidCallback? onTap;
+  final VoidCallback? onDelete;
 
   const ProductCard({
     super.key,
     required this.product,
     this.onTap,
+    this.onDelete,
   });
 
   @override
@@ -37,27 +40,34 @@ class ProductCard extends StatelessWidget {
           child: Row(
             children: [
               _StockIndicator(status: status),
+
               const SizedBox(
                 width: AppDimensions.spacingMd,
               ),
+
               Expanded(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment:
+                      CrossAxisAlignment.start,
                   children: [
                     Text(
                       product.name,
                       style: AppTextStyles.heading,
                     ),
+
                     const SizedBox(
                       height: AppDimensions.spacingXs,
                     ),
+
                     Text(
                       '${product.currentQuantity} ${product.unit}',
                       style: AppTextStyles.bodySecondary,
                     ),
+
                     const SizedBox(
                       height: AppDimensions.spacingXs,
                     ),
+
                     Text(
                       'Óptimo: ${product.optimalQuantity} ${product.unit}',
                       style: AppTextStyles.bodySecondary,
@@ -65,9 +75,34 @@ class ProductCard extends StatelessWidget {
                   ],
                 ),
               ),
+
               Text(
                 '₡${product.price}',
                 style: AppTextStyles.label,
+              ),
+
+              PopupMenuButton<String>(
+                onSelected: (value) {
+                  if (value == 'edit') {
+                    context.push(
+                      '/products/${product.id}/edit',
+                    );
+                  }
+
+                  if (value == 'delete') {
+                    onDelete?.call();
+                  }
+                },
+                itemBuilder: (context) => const [
+                  PopupMenuItem<String>(
+                    value: 'edit',
+                    child: Text('Editar'),
+                  ),
+                  PopupMenuItem<String>(
+                    value: 'delete',
+                    child: Text('Eliminar'),
+                  ),
+                ],
               ),
             ],
           ),

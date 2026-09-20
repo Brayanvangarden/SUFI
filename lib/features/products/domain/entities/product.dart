@@ -26,4 +26,36 @@ class Product {
     required this.createdAt,
     required this.updatedAt,
   });
+  Product copyWith({
+  int? id,
+  String? name,
+  String? description,
+  int? categoryId,
+  double? currentQuantity,
+  double? optimalQuantity,
+  double? minimumQuantity,
+  int? price,
+  String? unit,
+  bool? isActive,
+  DateTime? createdAt,
+  DateTime? updatedAt,
+}) {
+  return Product(
+    id: id ?? this.id,
+    name: name ?? this.name,
+    description: description ?? this.description,
+    categoryId: categoryId ?? this.categoryId,
+    currentQuantity:
+        currentQuantity ?? this.currentQuantity,
+    optimalQuantity:
+        optimalQuantity ?? this.optimalQuantity,
+    minimumQuantity:
+        minimumQuantity ?? this.minimumQuantity,
+    price: price ?? this.price,
+    unit: unit ?? this.unit,
+    isActive: isActive ?? this.isActive,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+  );
+}
 }
