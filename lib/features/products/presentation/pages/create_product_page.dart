@@ -89,6 +89,6 @@ class CreateProductPage extends ConsumerWidget {
               child: CircularProgressIndicator(),
             )
           : null,
-    );
+    );  
   }
 }
